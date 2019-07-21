@@ -1,6 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from time import time
+
+DPI = 96
+WIDTH = 1920
+HEIGHT = 1080
+
+plt.figure(figsize=(WIDTH/DPI, HEIGHT/DPI), dpi=DPI)
 
 names = "thm, steps, subtheorems_dup, totalsteps_dup, subtheorems, totalsteps, expandedsteps, maxpathlength".split(", ")
 #"metamath-exe/out2.csv"
@@ -14,15 +21,17 @@ with open("new.csv", "w+") as f:
 df = pd.read_csv("new.csv", sep="\t", header=None, names=names)#remove 1
 print(df)
 
+plt.title("Metamath's set.mm: %i proofs plotted" % len(df))
+
 NSAMPLE = 1
 
 df = df.sample(len(df)//NSAMPLE)
 
-X = "maxpathlength"
-Y = "expandedsteps"
+X = "totalsteps"
+Y = "subtheorems"
 
 XLOG = False
-YLOG = True
+YLOG = False
 
 df[X] = df[X].astype("float")
 df[Y] = df[Y].astype("float")
@@ -48,5 +57,7 @@ def label_point(x, y, val, ax):
         ax.text(point['x'], point['y'], str(point['val']))
 
 #label_point(df[X], df[Y], df.thm, ax)
-#plt.savefig("figure.png")
+
+
+plt.savefig("images/%i.png" % int(time()), dpi=DPI)
 plt.show()
