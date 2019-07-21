@@ -1,3 +1,11 @@
+# MMplot
+
+Plots Metamath theorem statistics
+
+Example: number of proof steps vs number of subtheorems:
+
+![Figure_1.png](Figure_1.png)
+
 ## Run
 
 Collect all proof labels
