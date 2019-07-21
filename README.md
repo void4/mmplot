@@ -2,9 +2,15 @@
 
 Plots Metamath theorem statistics
 
-Example: number of proof steps vs number of subtheorems:
+Examples:
+
+Number of proof steps vs number of subtheorems:
 
 ![Figure_1.png](Figure_1.png)
+
+Number of total (deduplicated) proof steps vs number of subtheorems:
+
+![Figure_2.png](Figure_2.png)
 
 ## Run
 
