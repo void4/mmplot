@@ -4,7 +4,7 @@ import numpy as np
 
 names = "thm, steps, subtheorems_dup, totalsteps_dup, subtheorems, totalsteps, expandedsteps, maxpathlength".split(", ")
 #"metamath-exe/out2.csv"
-data = open("out20.csv").read().splitlines()
+data = open("thmstats.csv").read().splitlines()
 print("DA", data[1])
 data = "\n".join(["\t".join([d for d in line.replace(",",":").split(":")[1::2]]) for line in data])
 
