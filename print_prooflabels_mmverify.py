@@ -364,5 +364,5 @@ class MM:
 
 #if __name__ == '__main__':
 mm = MM()
-mm.read(toks(open(sys.argv[1])))
+mm.read(toks(open("set.mm")))#sys.argv[1]
 #mm.dump()

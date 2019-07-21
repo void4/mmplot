@@ -12,7 +12,12 @@ Number of total (deduplicated) proof steps vs number of subtheorems:
 
 ![Figure_2.png](Figure_2.png)
 
-## Run
+## Plot
+`python plotit.py`
+
+## Update data
+
+This is only necessary to update the data which is included in this repository!
 
 Collect all proof labels
 
@@ -25,6 +30,3 @@ This next step may take > 1 hours
 Or, to append to existing file:
 
 `python thmstats.py >> thmsteps.csv`
-
-## Plot
-`python plotit.py`
