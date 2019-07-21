@@ -4,7 +4,7 @@ import numpy as np
 
 names = "thm, steps, subtheorems_dup, totalsteps_dup, subtheorems, totalsteps, expandedsteps, maxpathlength".split(", ")
 
-df = pd.read_csv("thmsteps.csv", sep="\t", header=None, names=names)#remove 1
+df = pd.read_csv("thmstats.csv", sep="\t", header=None, names=names)#remove 1
 print(df)
 
 NSAMPLE = 20#1
