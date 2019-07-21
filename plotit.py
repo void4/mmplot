@@ -1,28 +1,43 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+"""
+cd metamath && gcc m*.c -O3 -o metamath && ./metamath set.mm > out2.csv
+show trace_back * /essential /count_steps
+
+"""#can't tell when it exits
 
 names = "thm, steps, subtheorems_dup, totalsteps_dup, subtheorems, totalsteps, expandedsteps, maxpathlength".split(", ")
+#"metamath-exe/out2.csv"
+data = open("out20.csv").read().splitlines()
+print("DA", data[1])
+data = "\n".join(["\t".join([d for d in line.replace(",",":").split(":")[1::2]]) for line in data])
 
-df = pd.read_csv("thmstats.csv", sep="\t", header=None, names=names)#remove 1
+with open("new.csv", "w+") as f:
+    f.write(data)
+
+df = pd.read_csv("new.csv", sep="\t", header=None, names=names)#remove 1
 print(df)
 
-NSAMPLE = 20#1
+NSAMPLE = 1
 
 df = df.sample(len(df)//NSAMPLE)
 
-X = "expandedsteps"
+X = "maxpathlength"
 Y = "subtheorems"
 
-XLOG = True
+XLOG = False
 YLOG = False
+
+df[X] = df[X].astype("float")
+df[Y] = df[Y].astype("float")
 
 #df[Y] = [len(y) for y in df[Y]]
 if XLOG:
-    df[X] = np.log(df[X].astype("float"))
+    df[X] = np.log(df[X])
 
 if YLOG:
-    df[Y] = np.log(df[Y].astype("float"))
+    df[Y] = np.log(df[Y])
 
 ax = df.set_index(X)[Y].plot(style="o", markersize=1)
 

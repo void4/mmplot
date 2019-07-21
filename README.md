@@ -16,6 +16,11 @@ Number of the log of expanded (including duplicate) proof steps vs number of sub
 
 ![Figure_6.png](Figure_6.png)
 
+
+Maximum path length (proof depth) vs number of subtheorems
+
+![maxpathlengths_vs_subtheorems.png](maxpathlengths_vs_subtheorems.png)
+
 ## Install
 
 `pip install -r requirements.txt`
