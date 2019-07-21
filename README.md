@@ -12,6 +12,10 @@ Number of total (deduplicated) proof steps vs number of subtheorems:
 
 ![Figure_2.png](Figure_2.png)
 
+## Install
+
+`pip install -r requirements.txt`
+
 ## Plot
 `python plotit.py`
 
