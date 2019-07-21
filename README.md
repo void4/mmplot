@@ -21,6 +21,10 @@ Maximum path length (proof depth) vs number of subtheorems
 
 ![maxpathlengths_vs_subtheorems.png](maxpathlengths_vs_subtheorems.png)
 
+Proof depth vs expanded steps
+
+![maxpl_vs_logexpsteps.png](maxpl_vs_logexpsteps.png)
+
 ## Install
 
 `pip install -r requirements.txt`
