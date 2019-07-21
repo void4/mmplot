@@ -3758,18 +3758,17 @@ double countSteps(long statemNum, flag essentialFlag)
   }//show trace_back * /essential /count_steps
 
     printf(cat(
-        "label:",
         statement[statemNum].labelName,
-       ",steps:",
+       "\t",
            str((double)(stmtProofLen[statemNum])),
-       ",subtheorems_dup:", str((double)actualSubTheorems),
-       ",totalsteps_dup:",
+       "\t", str((double)actualSubTheorems),
+       "\t",
            str((double)actualSteps),
-       ",subtheorems:",
+       "\t",
            str((double)actualSubTheorems2),
-       ",totalsteps:",
+       "\t",
            str((double)actualSteps2),
-       ",extendedstep:",
+       "\t",
 
        /* This is the old stepCount; can be enabled to troubleshoot
           the new unlimited precision algorithm */
@@ -3785,7 +3784,7 @@ double countSteps(long statemNum, flag essentialFlag)
        str((double)(stmtAveDist[statemNum])),
        ".  ",
        */
-       ",maxpathlen:",
+       "\t",
        str((double)(stmtDist[statemNum])),
        "\n",
        NULL),

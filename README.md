@@ -36,14 +36,12 @@ Proof depth vs expanded steps
 
 This is only necessary to update the data which is included in this repository!
 
-Collect all proof labels
+This step may take > 1 hour
 
-`python print_prooflabels_mmverify.py > prooflabels.txt`
-
-This next step may take > 1 hours
-
-`python thmstats.py > thmsteps.csv`
-
-Or, to append to existing file:
-
-`python thmstats.py >> thmsteps.csv`
+```
+cd metamath && gcc m*.c -O3 -o metamath && ./metamath set.mm > out2.csv
+show trace_back * /essential /count_steps
+exit
+```
+Can't tell when it exits this way, maybe `tee` it.
+TODO new format

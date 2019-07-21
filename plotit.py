@@ -1,11 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-"""
-cd metamath && gcc m*.c -O3 -o metamath && ./metamath set.mm > out2.csv
-show trace_back * /essential /count_steps
-
-"""#can't tell when it exits
 
 names = "thm, steps, subtheorems_dup, totalsteps_dup, subtheorems, totalsteps, expandedsteps, maxpathlength".split(", ")
 #"metamath-exe/out2.csv"
@@ -24,10 +19,10 @@ NSAMPLE = 1
 df = df.sample(len(df)//NSAMPLE)
 
 X = "maxpathlength"
-Y = "subtheorems"
+Y = "expandedsteps"
 
 XLOG = False
-YLOG = False
+YLOG = True
 
 df[X] = df[X].astype("float")
 df[Y] = df[Y].astype("float")
