@@ -12,6 +12,10 @@ Number of total (deduplicated) proof steps vs number of subtheorems:
 
 ![Figure_2.png](Figure_2.png)
 
+Number of the log of expanded (including duplicate) proof steps vs number of subtheorems:
+
+![Figure_6.png](Figure_6.png)
+
 ## Install
 
 `pip install -r requirements.txt`
