@@ -6,24 +6,24 @@ Examples:
 
 Number of proof steps vs number of subtheorems:
 
-![Figure_1.png](Figure_1.png)
+![Figure_1.png](images/Figure_1.png)
 
 Number of total (deduplicated) proof steps vs number of subtheorems:
 
-![Figure_2.png](Figure_2.png)
+![Figure_2.png](images/Figure_2.png)
 
 Number of the log of expanded (including duplicate) proof steps vs number of subtheorems:
 
-![Figure_6.png](Figure_6.png)
+![Figure_6.png](images/Figure_6.png)
 
 
 Maximum path length (proof depth) vs number of subtheorems
 
-![maxpathlengths_vs_subtheorems.png](maxpathlengths_vs_subtheorems.png)
+![maxpathlengths_vs_subtheorems.png](images/maxpathlengths_vs_subtheorems.png)
 
 Proof depth vs expanded steps
 
-![maxpl_vs_logexpsteps.png](maxpl_vs_logexpsteps.png)
+![maxpl_vs_logexpsteps.png](images/maxpl_vs_logexpsteps.png)
 
 ## Install
 
