@@ -5,12 +5,16 @@ import numpy as np
 df = pd.read_csv("thmsteps.csv", sep="\t", header=None, names=["thm", "steps", "subtheorems", "totalsteps", "expandedsteps"])#remove 1
 print(df)
 
-df = df.sample(len(df))#//100
+NSAMPLE = 20#1
+
+df = df.sample(len(df)//NSAMPLE)
 
 X = "expandedsteps"
 Y = "subtheorems"
 
+#df[Y] = [len(y) for y in df[Y]]
 df[X] = np.log(df[X].astype("float"))
+#df[Y] = np.log(df[Y].astype("float"))
 
 ax = df.set_index(X)[Y].plot(style="o", markersize=1)
 
