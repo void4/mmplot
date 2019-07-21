@@ -36,7 +36,8 @@ for i, thm in enumerate(theorems[START:]):
 		subtheorems = r[45]
 		totalsteps = r[57]
 		expandedsteps = r[63]
-		print("\t".join([str(x) for x in [thm, steps, subtheorems, totalsteps, expandedsteps]]))
+		maxpathlength = r[77]
+		print("\t".join([str(x) for x in [thm, steps, subtheorems_dup, totalsteps_dup, subtheorems, totalsteps, expandedsteps, maxpathlength[:-1]]]))
 	except IndexError as e:
 		print(e)
 		print(r)
