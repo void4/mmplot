@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from time import time
+import sys
 
 DPI = 96
 WIDTH = 1920
@@ -23,14 +24,14 @@ print(df)
 
 plt.title("Metamath's set.mm: %i proofs plotted" % len(df))
 
-NSAMPLE = 1
+NSAMPLE = 100
 
 df = df.sample(len(df)//NSAMPLE)
 
-X = "totalsteps"
+X = "expandedsteps"
 Y = "subtheorems"
 
-XLOG = False
+XLOG = True
 YLOG = False
 
 df[X] = df[X].astype("float")
@@ -51,13 +52,26 @@ ylabel = "log(%s)" % Y if YLOG else Y
 ax.set_xlabel(xlabel)
 ax.set_ylabel(ylabel)
 
+d = {}
+
+with open("proof_with_comments.txt") as pc:
+    for line in pc.read().splitlines():
+        line = line.split(";")
+        d[line[0]] = " ".join(line[1:])
+
 def label_point(x, y, val, ax):
     a = pd.concat({'x': x, 'y': y, 'val': val}, axis=1)
     for i, point in a.iterrows():
-        ax.text(point['x'], point['y'], str(point['val']))
+        text = str(point['val'])
+        if text in d:
+            text += " "+d[text]
+        ax.text(point['x'], point['y'], text)
 
-#label_point(df[X], df[Y], df.thm, ax)
+label_point(df[X], df[Y], df.thm, ax)
 
-
-plt.savefig("images/%i.png" % int(time()), dpi=DPI)
+if len(sys.argv) > 1:
+    name = sys.argv[1]
+else:
+    name = "%i.png" % int(time())
+plt.savefig("images/"+name, dpi=DPI)
 plt.show()

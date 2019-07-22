@@ -182,6 +182,32 @@ class FrameStack(list):
         vprint(18, 'ma:', (dvs, f_hyps, e_hyps, stat))
         return (dvs, f_hyps, e_hyps, stat)
 
+table = {
+";":",",
+".":"",
+"(":"",
+")":""
+}
+
+def replaceAll(w):
+    for line in table:
+        w = w.replace(line, table[line])
+
+    return w
+
+from collections import Counter
+
+wordcounter = Counter()
+
+proofcomments = {}
+
+allowed_words = open("allowedwords.txt").read().splitlines()
+
+def filter(wordlist):
+    for word in wordlist:
+        wordcounter[word] += 1
+    return [word for word in wordlist if word!="" and word in allowed_words]#+"a with contributed by the for is in of".split()
+
 class MM:
     def __init__(self):
         self.fs = FrameStack()
@@ -233,7 +259,12 @@ class MM:
                 #vprint(1, 'verifying', label)
                 #print(stat)
                 #print(proof)
-                print(label, " ".join(lastcomment))
+                def print2(s):
+                    pass
+
+                #python mmverify.py set.mm > proof_with_comments.txt
+                proofcomments[label] = filter([replaceAll(w.lower()) for w in lastcomment])
+
                 proofs += stat
                 """
                 if proof[0] == '(': proof = self.decompress_proof(stat, proof)
@@ -380,5 +411,20 @@ class MM:
 
 #if __name__ == '__main__':
 mm = MM()
-mm.read(toks(open(sys.argv[1])))
+mm.read(toks(open("set.mm")))
 #mm.dump()
+
+for key, comment in proofcomments.items():
+    wordstats = [(word, wordcounter[word]) for word in comment]
+    if wordstats:
+        maxword = max(wordstats, key=lambda x:x[1])[0]
+    else:
+        maxword = "None"
+    print("%s;%s" % (key, maxword))
+
+#print(label + ";" + ";".join())
+
+"""
+with open("allowedwords.txt", "w+") as allowed:
+    allowed.write("\n".join([w for w,c in wc.most_common() if c>10]))
+"""
