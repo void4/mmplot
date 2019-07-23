@@ -2,7 +2,7 @@
 
 Plots Metamath theorem statistics
 
-Examples:
+##### Examples:
 
 Number of proof steps vs number of subtheorems:
 
@@ -44,4 +44,4 @@ show trace_back * /essential /count_steps
 exit
 ```
 Can't tell when it exits this way, maybe `tee` it.
-TODO new format
+TODO new format, use pexpect
